@@ -9,6 +9,10 @@ use GuzzleHttp\Client as GuzzleHttpClient;
  */
 class Client
 {
+    const HTTP_PROTOCOL = 'http';
+
+    const SEND_URL_PREFIX = 'default/en_US/send.html';
+
     /**
      * @var string
      */
@@ -52,7 +56,27 @@ class Client
      */
     public function sendSms($phone, $message, $line = 1)
     {
+        $response = $this->httpClient->get($this->getSendSmsUrl().'?'.http_build_query([
+            'u' => $this->userName,
+            'p' => $this->password,
+            'l' => $line,
+            'n' => $phone,
+            'm' => $message,
+        ]));
+
+        if ($response->getStatusCode() <> 200 || strpos($response->getBody(), 'ERROR') > 0) {
+            return false;
+        }
+
         return true;
+    }
+
+    /**
+     * @return string
+     */
+    private function getSendSmsUrl()
+    {
+        return self::HTTP_PROTOCOL.'://'.$this->host.'/'.self::SEND_URL_PREFIX;
     }
 
 }
