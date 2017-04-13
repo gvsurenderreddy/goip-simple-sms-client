@@ -1,0 +1,34 @@
+{
+    "name": "amaxlab/goip-simple-sms-client",
+    "description": "Library for send SMS for GOIP gateway. Using curl for sending.",
+    "keywords": [ "php", "goip", "sms" ],
+    "homepage": "https://github.com/amaxlab/goip-simple-sms-client",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": ">=5.5",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "AmaxLab\\GoipSimpleSmsClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": { "AmaxLab\\GoipSimpleSmsClient\\Tests\\": "tests/" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    },
+    "authors": [
+        {
+            "name": "Egor Zyuskin",
+            "email": "ezyuskin@amaxlab.ru"
+        }
+    ]
+}
